@@ -1,0 +1,14 @@
+# /etc/systemd/system/dhcp-keepalive.service
+
+[Unit]
+Description=DHCP Keepalive Service
+After=network.target
+
+[Service]
+ExecStart=/opt/dhcp-keepalive/.venv/bin/python /opt/dhcp-keepalive/dhcp-keepalive.py -i INTERFACE -r
+WorkingDirectory=/opt/dhcp-keepalive/
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
